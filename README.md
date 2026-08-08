@@ -17,7 +17,7 @@ Open `index.html` directly, or open this folder in VS Code and choose **Open wit
 
 ## Editing content
 
-- Replace `assets/images/logo/amba-logo.svg` with the final extracted logo using the same filename, or update its path in `assets/js/main.js` and the page metadata.
+- Replace `assets/images/logo/amba-logo.jpg` with the final extracted logo using the same filename, or update its path in `assets/js/main.js` and the page metadata.
 - Product images are expected at `assets/images/products/[product-slug].svg`. Missing files automatically display `product-placeholder.svg`. Add extracted catalogue images and update each `image` value in `assets/js/products.js` if using PNG or WebP.
 - Edit product names, prices, descriptions, usage, or featured status in `assets/js/products.js`. Use `price: null` for products such as soaps whose price varies.
 - Update the WhatsApp number in `assets/js/main.js` (`PHONE`) and any direct `wa.me` links in the HTML pages.
