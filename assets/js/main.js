@@ -16,7 +16,10 @@
     $('.scroll-top').on('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     $(document).on('error','img[data-fallback]',function(){if(this.src.indexOf('product-placeholder')<0)this.src=$(this).data('fallback')});
     const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target)}}),{threshold:.1}); document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-    window.addEventListener('load',()=>setTimeout(()=>$('#preloader').addClass('hidden'),250));
+    const hidePreloader=()=>setTimeout(()=>$('#preloader').addClass('hidden').attr('aria-hidden','true'),250);
+    if(document.readyState==='complete')hidePreloader();
+    else window.addEventListener('load',hidePreloader,{once:true});
+    setTimeout(hidePreloader,4000);
     $('#contactForm').on('submit',function(e){e.preventDefault();if(!this.checkValidity()){this.classList.add('was-validated');return}const d=Object.fromEntries(new FormData(this));const msg=`Hello Amba Naturals,\nName: ${d.name}\nMobile: ${d.mobile}\nEmail: ${d.email||'Not provided'}\nInterested product: ${d.product}\nMessage: ${d.message}`;window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank')});
   });
 })(jQuery);
